@@ -1,0 +1,2 @@
+include ':app',':XBar'
+rootProject.name = "XToolbar"
