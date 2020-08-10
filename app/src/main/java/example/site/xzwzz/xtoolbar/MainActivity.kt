@@ -13,9 +13,9 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         xtoolbar.getHelper()
             .title("标题 标题  标题标题 标题  标题标题 标题  标题标题 标题  标题", marquee = true)
-            .openNaviButton {
-                finish()
-            }
+//            .openNaviButton {
+//                finish()
+//            }
             .subTitle("小标题")
             .titleOnClickListener {
                 Toast.makeText(this@MainActivity, "吐丝", Toast.LENGTH_SHORT).show()

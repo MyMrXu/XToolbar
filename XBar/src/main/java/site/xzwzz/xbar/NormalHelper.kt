@@ -101,17 +101,25 @@ public class NormalHelper constructor(val mContext: Context) {
     }
 
     private fun setParams() {
-        if (backButton == null) {
-            backButton = addToolbarButton(
-                Gravity.LEFT,
-                resourceDrawable = if (backRes == 0) R.drawable.ic_baseline_arrow_back_ios_24 else backRes,
-                clickListener = backListener
-            )
+        if (backListener == null) {
+            if (rootView.indexOfChild(backButton) != -1) {
+                rootView.removeView(backButton)
+                backButton = null
+            }
         } else {
-            backButton?.setOnClickListener {
-                backListener?.invoke(it)
+            if (backButton == null) {
+                backButton = addToolbarButton(
+                    Gravity.LEFT,
+                    resourceDrawable = if (backRes == 0) R.drawable.ic_baseline_arrow_back_ios_24 else backRes,
+                    clickListener = backListener
+                )
+            } else {
+                backButton?.setOnClickListener {
+                    backListener?.invoke(it)
+                }
             }
         }
+
         if (title.isNotEmpty()) {
             mTitleView.setText(title)
             mTitleView.setTextSize(
